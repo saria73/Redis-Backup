@@ -2,9 +2,9 @@
 
 namespace Saria73\RedisBackup;
 
+use Saria73\RedisBackup\Commands\RedisBackupCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Saria73\RedisBackup\Commands\RedisBackupCommand;
 
 class RedisBackupServiceProvider extends PackageServiceProvider
 {
