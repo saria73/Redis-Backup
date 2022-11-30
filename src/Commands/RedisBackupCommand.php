@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Saria73\RedisBackup\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class RedisBackupCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'redis-backup';
 
     public $description = 'My command';
 
