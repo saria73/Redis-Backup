@@ -4,9 +4,9 @@ namespace App;
 
 class Redis
 {
-
     /**
      * Execute the job
+     *
      * @return void
      */
     public function handle()
@@ -19,7 +19,8 @@ class Redis
 
     /**
      * Take backup from all Redis databases
-     * @param \Redis $connection
+     *
+     * @param  \Redis  $connection
      * @return void
      */
     private function backUp(\Redis $connection): void
@@ -31,15 +32,16 @@ class Redis
 
     /**
      * Read Redis data from given DB and write them to a custom file
-     * @param \Redis $connection
-     * @param integer $db_number
-     * @return boolean
+     *
+     * @param  \Redis  $connection
+     * @param  int  $db_number
+     * @return bool
      */
     public function saveData(\Redis $connection, int $db_number): bool
     {
-        $backup_file = fopen(config('backup.redis-backup-storage-direction') . 'backup-db-' . strval($db_number) . '.txt', 'w');
+        $backup_file = fopen(config('backup.redis-backup-storage-direction').'backup-db-'.strval($db_number).'.txt', 'w');
 
-        if (!$backup_file) {
+        if (! $backup_file) {
             return false;
         }
 
@@ -48,11 +50,12 @@ class Redis
 
         foreach ($dbKeys as $key) {
             $value = $connection->get($key);
-            $line = $key . ' : ' . $value . "\n";
+            $line = $key.' : '.$value."\n";
             fwrite($backup_file, $line);
         }
 
         fclose($backup_file);
+
         return true;
     }
 }
